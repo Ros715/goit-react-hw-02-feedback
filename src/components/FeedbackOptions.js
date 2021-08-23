@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function FeedbackOptions({ options, onLeaveFeedback }) {
   //console.log(options);
   return (
@@ -10,5 +12,14 @@ function FeedbackOptions({ options, onLeaveFeedback }) {
     </div>
   );
 }
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      handleClick: PropTypes.func.isRequired,
+    })
+  ),
+};
 
 export default FeedbackOptions;

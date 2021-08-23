@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+import styles from "./Section.module.css";
 import Statistics from "./Statistics.js";
 import FeedbackOptions from "./FeedbackOptions.js";
 import Notification from "./Notification.js";
@@ -11,7 +13,6 @@ class Section extends React.Component {
       neutral: 0,
       bad: 0,
     };
-    this.title = props.title;
     //console.log(props);
   }
 
@@ -43,7 +44,7 @@ class Section extends React.Component {
     ];
     return (
       <div>
-        <p>{this.title}</p>
+        <p className={styles.title}>{this.props.title}</p>
         <FeedbackOptions options={buttonsOptions} />
         {this.countTotalFeedback() === 0 ? (
           <Notification message="No feedback given" />
@@ -60,5 +61,9 @@ class Section extends React.Component {
     );
   }
 }
+
+Section.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default Section;
